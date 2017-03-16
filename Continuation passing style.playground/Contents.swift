@@ -12,7 +12,7 @@ class Model {
 	}
 }
 
-func isEmpty(model: Model, onTrue: @escaping (Void) -> Void, onFalse: @escaping (Void) -> Void) {
+func whenEmpty(model: Model, _ onTrue: @escaping (Void) -> Void, otherwise onFalse: @escaping (Void) -> Void) {
 	model.count { (count) in
 		if count == 0 {
 			onTrue()
@@ -24,8 +24,8 @@ func isEmpty(model: Model, onTrue: @escaping (Void) -> Void, onFalse: @escaping 
 
 let model = Model()
 
-isEmpty(model: model, onTrue: {
+whenEmpty(model: model, {
 	//no registers
-}, onFalse: {
+}, otherwise: {
 	//there are some registers
 })
