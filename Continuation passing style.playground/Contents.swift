@@ -12,12 +12,20 @@ class Model {
 	}
 }
 
-let model = Model()
-
-model.count { (count) in
-	if count == 0 {
-		//no registers
-	} else {
-		//there are some registers
+func isEmpty(model: Model, onTrue: @escaping (Void) -> Void, onFalse: @escaping (Void) -> Void) {
+	model.count { (count) in
+		if count == 0 {
+			onTrue()
+		} else {
+			onFalse()
+		}
 	}
 }
+
+let model = Model()
+
+isEmpty(model: model, onTrue: {
+	//no registers
+}, onFalse: {
+	//there are some registers
+})
