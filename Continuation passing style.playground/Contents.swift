@@ -1,14 +1,23 @@
+import PlaygroundSupport
+import UIKit
+
+PlaygroundPage.current.needsIndefiniteExecution = true
+
 class Model {
 
-	func count() -> Int {
-		return 0
+	func count(f: @escaping (Int) -> Void) {
+		DispatchQueue.main.async {
+			f(0)
+		}
 	}
 }
 
 let model = Model()
 
-if model.count() == 0 {
-	//no registers
-} else {
-	//there are some registers
+model.count { (count) in
+	if count == 0 {
+		//no registers
+	} else {
+		//there are some registers
+	}
 }
