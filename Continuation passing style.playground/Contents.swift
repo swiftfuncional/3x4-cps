@@ -25,7 +25,7 @@ protocol CanBeEmpty : AsynchronousCountable {
 }
 
 extension Model: CanBeEmpty {
-	func whenEmpty(_ onTrue: @escaping (Void) -> Void, otherwise onFalse: @escaping (Void) -> Void) {
+	func whenEmpty(_ onTrue: @escaping () -> Void, otherwise onFalse: @escaping () -> Void) {
 		self.count { (count) in
 			if count == 0 {
 				onTrue()
